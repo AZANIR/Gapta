@@ -28,8 +28,7 @@ pnpm-debug.log*
 CLAUDE.md
 tasks.md
 .claude/
+.cursor/
 .vscode/
-# Local MCP secrets only; rest of .cursor/ is shared rules/skills
-.cursor/mcp.local.json
-# Project notes at repo root only (not .cursor/docs)
-/docs/
+AGENTS.md
+docs/
