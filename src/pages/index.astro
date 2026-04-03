@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="GAPTA — Скоро відкриття">
+  <main class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4 relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 text-center max-w-2xl mx-auto">
+      <!-- Logo / Brand -->
+      <div class="mb-8">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-emerald-500 mb-6 shadow-lg shadow-blue-500/20">
+          <span class="text-3xl font-black text-white tracking-tighter">G</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-white tracking-tight mb-2">
+          GAPTA
+        </h1>
+        <div class="h-1 w-16 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto rounded-full"></div>
+      </div>
+
+      <!-- Message -->
+      <p class="text-xl md:text-2xl text-slate-300 mb-4 font-light">
+        Сайт на стадії розробки
+      </p>
+      <p class="text-slate-400 mb-10 max-w-md mx-auto leading-relaxed">
+        Ми працюємо над новим сайтом. Незабаром тут з'явиться інформація про наші послуги та портфоліо.
+      </p>
+
+      <!-- Contact info -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+        <a
+          href="tel:+380000000000"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl text-slate-300 hover:text-white transition-all duration-300"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Зателефонувати
+        </a>
+        <a
+          href="mailto:info@gapta.com.ua"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 rounded-xl text-white font-medium transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+          Написати
+        </a>
+      </div>
+
+      <!-- Domains -->
+      <div class="text-sm text-slate-500">
+        <p>gapta.com.ua · gapta.rivne.ua · gapta.rv.ua</p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

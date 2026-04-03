@@ -1,0 +1,54 @@
+---
+description: After tasks, update docs/project_notes/ when that folder exists (Gapta)
+alwaysApply: true
+---
+
+# Task Completion — Project Memory
+
+**After finishing ANY task** (feature, bug fix, article, refactor, config change, skill install, etc.), update project memory **if** `docs/project_notes/` exists. If the folder is not in the repo yet, skip or create it when the team adopts this workflow.
+
+## What to Update
+
+Pick the files that apply — not every task touches all four.
+
+### `docs/project_notes/issues.md` — Work Log
+Update **after every task**, no exceptions.
+- Add a dated entry with a brief description of what was done
+- Include the branch name, PR link, or issue URL if available
+- Mark status (Completed / In Progress / Blocked)
+
+### `docs/project_notes/bugs.md` — Bug Log
+Update when **a bug was encountered and fixed** during the task.
+- Document the issue, root cause, solution, and prevention
+- Even small gotchas are worth recording if they took time to figure out
+
+### `docs/project_notes/decisions.md` — Architectural Decisions
+Update when **a non-trivial choice was made** (library selection, pattern change, config strategy, etc.).
+- Add an ADR entry with context, decision, alternatives, and consequences
+- Number sequentially (check existing entries for the next ADR number)
+
+### `docs/project_notes/key_facts.md` — Project Configuration
+Update when **project configuration, URLs, paths, ports, or tooling changed**.
+- Keep it non-sensitive (no passwords, no API keys — those go in `.env`)
+- Add new tools, services, important URLs, or environment details
+
+## Checklist (run mentally before closing a task)
+
+1. Did I log this work in `issues.md`?
+2. Did I hit any bugs worth documenting in `bugs.md`?
+3. Did I make an architectural or tooling decision → `decisions.md`?
+4. Did project config/paths/URLs change → `key_facts.md`?
+
+## Style Rules
+
+- **Bullet lists** over tables
+- **Concise entries** — 1-3 lines per item
+- **Always dated** — use `YYYY-MM-DD`
+- **Include URLs** — PRs, issues, docs, dashboards
+- **Newest first** — add entries at the top of the log section
+
+## Before Proposing Changes
+
+- Check `decisions.md` before suggesting architectural changes
+- Search `bugs.md` when encountering errors that feel familiar
+- Consult `key_facts.md` for project configuration instead of guessing
