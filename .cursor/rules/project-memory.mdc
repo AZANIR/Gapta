@@ -1,0 +1,54 @@
+---
+description: Project memory — paths, env, and conventions for Gapta
+alwaysApply: true
+---
+
+# Project Memory (Gapta)
+
+Single source of truth for paths, env vars, and tools. Run commands from the **project root** (`D:\QA_A\Gapta` or repo root) unless stated otherwise.
+
+## Environment and API keys
+
+- **File:** `.env` in the **project root** (gitignored).
+- **Variables:**
+  - `GEMINI_API_KEY` — nano-banana-pro (image generation)
+  - `GITHUB_PERSONAL_ACCESS_TOKEN` — GitHub MCP
+  - `EXA_API_KEY` — Exa MCP
+  - `CONTEXT7_API_KEY` — Context7 MCP (see [.cursor/README-MCP.md](.cursor/README-MCP.md))
+- Never commit secrets. Prefer env / `.env`; committed [.cursor/mcp.json](.cursor/mcp.json) has **no** embedded tokens — keys must be in the environment.
+
+## Nano Banana Pro
+
+- **Skill:** `.cursor/skills/nano-banana-pro/`
+- **Run from project root** with `uv run` and `GEMINI_API_KEY` loaded.
+
+## MCP
+
+- **Config:** `.cursor/mcp.json` + [.cursor/mcp.example.json](.cursor/mcp.example.json)
+- Details: [.cursor/README-MCP.md](.cursor/README-MCP.md)
+
+## Articles and content (when blog exists in repo)
+
+- **Path:** `src/content/articles/{slug}/index.mdx`, `imgs/`, optional `components/`
+- **Rules:** `article-writing.mdc`, `content-pipeline.mdc`
+- **Language:** Ukrainian for user-facing copy.
+- **Topic:** computerized embroidery (Gapta / gapta.com.ua).
+- **Git:** no direct commits to **`master`**; feature branches; `conventional-commits` skill.
+
+## Git flow for new articles (Stage 5)
+
+- **Branch from `master`:** `git checkout master && git pull origin master && git checkout -b article/{slug}`
+- **Commit:** e.g. `feat(article): add …` or `content(article): update …`
+- **Push:** `git push -u origin article/{slug}`
+- **PR:** GitHub MCP `create_pull_request`: owner `AZANIR`, repo **`Gapta`**, base **`master`**, head = branch name. Create the PR after push for article/content work.
+- **Publish:** merge to **`master`** → [.github/workflows/deploy.yml](.github/workflows/deploy.yml). Full guide: [.cursor/docs/FLOW.md](.cursor/docs/FLOW.md).
+
+## Project notes
+
+Maintain **`docs/project_notes/`** after tasks per [task-completion.mdc](task-completion.mdc) and [AGENTS.md](../../AGENTS.md).
+
+## Summary
+
+- Keys in root `.env` / environment; not in committed MCP JSON.
+- **Repo:** AZANIR/**Gapta**, default branch **`master`** for deploy (see AGENTS.md).
+- **Article skill:** `gapta-article-writer`.
