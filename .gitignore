@@ -25,6 +25,10 @@ pnpm-debug.log*
 
 .vercel
 .cursorrules
+CLAUDE.md
 tasks.md
 .claude/
 .cursor/
+.vscode/
+AGENTS.md
+docs/
