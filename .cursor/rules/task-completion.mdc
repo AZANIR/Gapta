@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Task Completion — Project Memory
 
-**After finishing ANY task** (feature, bug fix, article, refactor, config change, skill install, etc.), update project memory **if** `docs/project_notes/` exists. If the folder is not in the repo yet, skip or create it when the team adopts this workflow.
+**After finishing ANY task** (feature, bug fix, article, refactor, config change, skill install, etc.), update the relevant files in **`docs/project_notes/`** (see [AGENTS.md](../../AGENTS.md) «Система project memory»).
 
 ## What to Update
 

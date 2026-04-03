@@ -96,13 +96,13 @@ npm run preview
 
 ### CI/CD
 
-Push у гілку **`main`** → [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): `npm ci`, `npm run build`, деплой вмісту `dist/` на сервер (наприклад `/var/www/gapta.com.ua/`). Деталі секретів — у [README.md](README.md) (SSH, `REMOTE_*`).
+Push у гілку **`master`** → [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml): SSH на сервер, `git pull origin master` у репо блогу, `docker compose build` / `up`. Секрети: `SERVER_HOST`, `SERVER_USER`, `SERVER_SSH_KEY` — у [README.md](README.md).
 
-Хостинг: Hetzner, Nginx, Let’s Encrypt (опис у README).
+Хостинг: Hetzner, Caddy/Docker (опис у README).
 
 ## Git workflow
 
-**Не комітити напряму в `main`.** Робота в feature-гілках.
+**Не комітити напряму в `master`.** Робота в feature-гілках.
 
 ### Імена гілок
 
@@ -124,7 +124,7 @@ Push у гілку **`main`** → [`.github/workflows/deploy.yml`](.github/workf
 
 **Скоупи (приклади):** `article`, `ui`, `layout`, `seo`, `config`, `deps`, `skill`, `rule`
 
-Скил `.cursor/skills/conventional-commits` — для гілок і повідомлень комітів; PR у репозиторій **AZANIR/Gapta**, база **`main`**.
+Скил `.cursor/skills/conventional-commits` — для гілок і повідомлень комітів; PR у репозиторій **AZANIR/Gapta**, база **`master`** (як у CI).
 
 ## Контент-пайплайн (6 етапів)
 
@@ -137,7 +137,7 @@ AI-асистована робота зі скілами в `.cursor/skills/`:
 | 3    | Зображення         | `nano-banana-pro`, Cursor GenerateImage                  |
 | 4    | Збірка + перевірка | `npm run build`, `playwright-cli`, Context7 MCP          |
 | 5    | Затвердження       | GitHub MCP → PR → рев’ю людиною                          |
-| 6    | Публікація         | Merge у `main` → GitHub Actions → прод                   |
+| 6    | Публікація         | Merge у `master` → GitHub Actions → SSH + Docker на сервері |
 
 ### Коли що використовувати
 
@@ -146,7 +146,7 @@ AI-асистована робота зі скілами в `.cursor/skills/`:
 - **SEO:** `seo-geo`.
 - **Зображення:** `nano-banana-pro` (`GEMINI_API_KEY`, за потреби `uv`).
 - **Перед деплоєм:** `npm run build`, за потреби `playwright-cli`.
-- **Коміти/PR:** `conventional-commits`; PR у **Gapta**, база **`main`**.
+- **Коміти/PR:** `conventional-commits`; PR у **Gapta**, база **`master`**.
 
 ## MCP сервери
 
@@ -173,3 +173,24 @@ AI-асистована робота зі скілами в `.cursor/skills/`:
 | Ключ Context7                  | Context7 MCP (див. приклад конфігу) |
 
 Не комітити значення секретів у репозиторій.
+
+## Система project memory
+
+У репозиторії ведеться **інституційна пам’ять** у [`docs/project_notes/`](docs/project_notes/):
+
+| Файл | Призначення |
+|------|-------------|
+| [`bugs.md`](docs/project_notes/bugs.md) | Баги: симптом, причина, рішення, запобігання |
+| [`decisions.md`](docs/project_notes/decisions.md) | ADR — контекст, рішення, альтернативи, наслідки |
+| [`key_facts.md`](docs/project_notes/key_facts.md) | Домени, гілки CI, порти, стек (**без** секретів) |
+| [`issues.md`](docs/project_notes/issues.md) | Короткий журнал робіт і PR/issue |
+
+**Протоколи для агентів**
+
+- Перед зміною архітектури — переглянути `decisions.md`.
+- При помилках — шукати в `bugs.md`; нові випадки документувати після вирішення.
+- Конфігурацію (гілка деплою, URL) брати з `key_facts.md` / `README.md`, не вигадувати.
+- Після завершення задачі — оновити `issues.md`; за потреби `bugs.md`, `decisions.md`, `key_facts.md`.
+- Стиль: маркерні списки, дати `YYYY-MM-DD`, посилання на PR.
+
+Для **Claude Code** ті самі правила дубльовані в [`CLAUDE.md`](CLAUDE.md).

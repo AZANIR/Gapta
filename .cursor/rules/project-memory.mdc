@@ -33,22 +33,22 @@ Single source of truth for paths, env vars, and tools. Run commands from the **p
 - **Rules:** `article-writing.mdc`, `content-pipeline.mdc`
 - **Language:** Ukrainian for user-facing copy.
 - **Topic:** computerized embroidery (Gapta / gapta.com.ua).
-- **Git:** no direct commits to **`main`**; feature branches; `conventional-commits` skill.
+- **Git:** no direct commits to **`master`**; feature branches; `conventional-commits` skill.
 
 ## Git flow for new articles (Stage 5)
 
-- **Branch from `main`:** `git checkout main && git pull origin main && git checkout -b article/{slug}`
+- **Branch from `master`:** `git checkout master && git pull origin master && git checkout -b article/{slug}`
 - **Commit:** e.g. `feat(article): add …` or `content(article): update …`
 - **Push:** `git push -u origin article/{slug}`
-- **PR:** GitHub MCP `create_pull_request`: owner `AZANIR`, repo **`Gapta`**, base **`main`**, head = branch name. Create the PR after push for article/content work.
-- **Publish:** merge to **`main`** → [.github/workflows/deploy.yml](.github/workflows/deploy.yml). Full guide: [.cursor/docs/FLOW.md](.cursor/docs/FLOW.md).
+- **PR:** GitHub MCP `create_pull_request`: owner `AZANIR`, repo **`Gapta`**, base **`master`**, head = branch name. Create the PR after push for article/content work.
+- **Publish:** merge to **`master`** → [.github/workflows/deploy.yml](.github/workflows/deploy.yml). Full guide: [.cursor/docs/FLOW.md](.cursor/docs/FLOW.md).
 
-## Project notes (optional)
+## Project notes
 
-If `docs/project_notes/` exists, keep bugs/decisions/key facts there and update after tasks ([task-completion.mdc](task-completion.mdc)). If the folder is missing, skip or create when the team adopts that workflow.
+Maintain **`docs/project_notes/`** after tasks per [task-completion.mdc](task-completion.mdc) and [AGENTS.md](../../AGENTS.md).
 
 ## Summary
 
 - Keys in root `.env` / environment; not in committed MCP JSON.
-- **Repo:** AZANIR/**Gapta**, default branch **`main`**, deploy **npm** + rsync (see AGENTS.md).
+- **Repo:** AZANIR/**Gapta**, default branch **`master`** for deploy (see AGENTS.md).
 - **Article skill:** `gapta-article-writer`.
