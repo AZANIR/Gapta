@@ -2,61 +2,379 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="GAPTA — Скоро відкриття">
-  <main class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4 relative overflow-hidden">
-    <!-- Background decoration -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-3xl"></div>
+<BaseLayout title="ГАПТА — Студія машинної вишивки">
+  <!-- ============ HERO ============ -->
+  <section class="hero" data-screen-label="Hero" style="position:relative;background:var(--navy-900);color:var(--cream);overflow:hidden;">
+    <div class="hero-bg" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;right:360px;background-image:url('/assets/hero-shield.png');background-size:cover;background-position:left center;"></div>
+    <div class="hero-bg-overlay" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,19,38,0) 0%,rgba(11,19,38,0) 35%,rgba(11,19,38,0.55) 70%,rgba(11,19,38,0.85) 100%);"></div>
+
+    <!-- NAV -->
+    <div class="site-nav-wrap" style="background:var(--navy-900);">
+      <header class="nav">
+        <a class="brand" href="/">
+          <div class="brand-name">ГАПТА</div>
+          <div class="brand-divider"></div>
+          <div class="brand-tag">Студія машинної<br>вишивки</div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Послуги</a></li>
+          <li><a href="#portfolio">Портфоліо</a></li>
+          <li><a href="#process">Процес</a></li>
+          <li><a href="#materials">Матеріали</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#contact">Контакти</a></li>
+        </ul>
+        <a class="nav-cta" href="#contact">Отримати розрахунок</a>
+        <button class="nav-burger" id="nav-burger" aria-label="Меню" aria-expanded="false">
+          <span></span>
+        </button>
+      </header>
+      <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <ul>
+          <li><a href="/">Головна</a></li>
+          <li><a href="#services">Послуги</a></li>
+          <li><a href="#portfolio">Портфоліо</a></li>
+          <li><a href="#process">Процес</a></li>
+          <li><a href="#materials">Матеріали</a></li>
+          <li><a href="#about">Про нас</a></li>
+          <li><a href="#contact">Контакти</a></li>
+        </ul>
+        <a class="nav-cta" href="#contact">Отримати розрахунок</a>
+      </nav>
     </div>
 
-    <div class="relative z-10 text-center max-w-2xl mx-auto">
-      <!-- Logo / Brand -->
-      <div class="mb-8">
-        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-emerald-500 mb-6 shadow-lg shadow-blue-500/20">
-          <span class="text-3xl font-black text-white tracking-tighter">G</span>
+    <div class="hero-grid" style="position:relative;z-index:4;display:grid;grid-template-columns:1fr 360px;">
+      <div class="hero-center" style="grid-column:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 56px 70px 50%;text-align:center;position:relative;">
+        <div class="hero-eyebrow-row" style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:28px;">
+          <span class="eyebrow" style="color:var(--cream);font-weight:600;">Точна вишивка для сильних брендів</span>
+          <div class="hero-divider" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;gap:10px;width:220px;">
+            <span style="flex:1;height:1px;background:var(--gold);opacity:0.7;"></span>
+            <span style="width:8px;height:8px;background:var(--gold);transform:rotate(45deg);flex:0 0 auto;"></span>
+            <span style="flex:1;height:1px;background:var(--gold);opacity:0.7;"></span>
+          </div>
         </div>
-        <h1 class="text-5xl md:text-6xl font-bold text-white tracking-tight mb-2">
-          GAPTA
+        <h1 style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(44px,4.6vw,70px);line-height:1.1;letter-spacing:-0.005em;color:var(--cream);max-width:520px;">
+          Ідентичність<br>бренду, втілена<br>у <em style="font-style:italic;color:var(--gold-2);">тканині</em>
         </h1>
-        <div class="h-1 w-16 bg-gradient-to-r from-blue-500 to-emerald-500 mx-auto rounded-full"></div>
+        <p style="margin-top:26px;font-size:14px;line-height:1.7;color:rgba(244,239,228,0.72);max-width:440px;">
+          Створюємо шеврони, нашивки та вишивку<br>на одязі й аксесуарах з увагою до кожної деталі.
+        </p>
+        <div style="margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+          <a class="btn btn-primary" href="#contact">Замовити вишивку</a>
+          <a class="btn btn-ghost" href="#portfolio">Переглянути роботи</a>
+        </div>
+        <div class="hero-seal" aria-label="Печатка ГАПТА" style="position:absolute;left:5%;bottom:50px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9a66b 0%,#8a6b3a 70%,#5a4524 100%);box-shadow:0 8px 22px rgba(0,0,0,0.45),inset 0 1px 2px rgba(255,220,160,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2b1f0e;font-family:'Playfair Display',serif;text-align:center;z-index:5;">
+          <span style="font-size:8px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;opacity:0.85;">СТУДІЯ</span>
+          <span style="font-size:28px;line-height:1;margin:4px 0;color:#3a2a14;">✿</span>
+          <span style="font-size:13px;letter-spacing:0.28em;font-weight:600;color:#2b1f0e;">ГАПТА</span>
+        </div>
       </div>
 
-      <!-- Message -->
-      <p class="text-xl md:text-2xl text-slate-300 mb-4 font-light">
-        Сайт на стадії розробки
-      </p>
-      <p class="text-slate-400 mb-10 max-w-md mx-auto leading-relaxed">
-        Ми працюємо над новим сайтом. Незабаром тут з'явиться інформація про наші послуги та портфоліо.
-      </p>
+      <aside class="hero-rail" style="grid-column:2;position:relative;display:flex;flex-direction:column;z-index:5;">
+        <div class="rail-card" style="background:rgba(10,16,32,0.92);color:var(--cream);padding:56px 40px 48px;border-left:1px solid var(--line);flex:0 0 auto;display:flex;flex-direction:column;">
+          <span class="eyebrow" style="margin-bottom:22px;font-size:10px;color:var(--cream);opacity:0.85;">Преміальна вишивка</span>
+          <h2 style="font-family:'Playfair Display',serif;font-weight:500;font-size:38px;line-height:1.25;color:var(--gold-2);">Для тих,<br>хто цінує<br>деталі</h2>
+          <p style="margin-top:20px;font-size:13px;line-height:1.65;color:rgba(244,239,228,0.72);">Поєднання точності машини<br>та майстерності в кожному стібку.</p>
+          <a href="#portfolio" style="margin-top:26px;color:var(--gold-2);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:12px;">
+            Дивитися портфоліо
+            <span style="width:28px;height:1px;background:var(--gold-2);display:inline-block;"></span>
+          </a>
+        </div>
+        <div aria-hidden="true" style="flex:0 0 auto;height:300px;min-height:300px;background-image:url('/assets/hero-machine.png');background-size:cover;background-position:center;border-left:1px solid var(--line);border-top:1px solid var(--line);position:relative;">
+          <div style="position:absolute;left:24px;bottom:24px;width:86px;height:86px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9a66b 0%,#8a6b3a 70%,#5a4524 100%);box-shadow:0 6px 16px rgba(0,0,0,0.5),inset 0 1px 2px rgba(255,220,160,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2b1f0e;text-align:center;">
+            <span style="font-size:6px;letter-spacing:0.3em;text-transform:uppercase;font-weight:700;opacity:0.9;">СТУДІЯ</span>
+            <span style="font-size:20px;margin:2px 0;">✿</span>
+            <span style="font-family:'Playfair Display',serif;font-size:10px;letter-spacing:0.28em;font-weight:700;">ГАПТА</span>
+          </div>
+        </div>
+      </aside>
+    </div>
 
-      <!-- Contact info -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-        <a
-          href="tel:+380000000000"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl text-slate-300 hover:text-white transition-all duration-300"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-          </svg>
-          Зателефонувати
-        </a>
-        <a
-          href="mailto:info@gapta.com.ua"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 rounded-xl text-white font-medium transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-          </svg>
-          Написати
-        </a>
+    <style>
+      @media (max-width: 1100px) {
+        .hero .hero-bg { right: 0 !important; }
+        .hero-grid { grid-template-columns: 1fr !important; }
+        .hero-center { padding: 80px 36px 60px !important; min-height: 560px; align-items: center !important; padding-left: 36px !important; }
+        .hero-seal { left: 24px !important; bottom: 24px !important; width: 90px !important; height: 90px !important; }
+        .hero-rail { grid-column: 1 !important; flex-direction: row !important; }
+        .hero-rail .rail-card { padding: 34px 36px !important; border-left: none !important; border-top: 1px solid var(--line) !important; flex: 1 !important; }
+        .hero-rail > div:last-child { width: 320px !important; height: auto !important; min-height: 260px !important; border-left: 1px solid var(--line) !important; border-top: 1px solid var(--line) !important; }
+      }
+      @media (max-width: 640px) {
+        .hero-center { padding: 40px 22px 50px !important; min-height: 500px !important; }
+        .hero-seal { display: none !important; }
+        .hero-rail { flex-direction: column !important; }
+        .hero-rail .rail-card { padding: 28px 22px !important; }
+        .hero-rail .rail-card h2 { font-size: 30px !important; }
+        .hero-rail > div:last-child { width: 100% !important; height: 200px !important; min-height: 200px !important; border-left: none !important; }
+      }
+    </style>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="services" data-screen-label="Services" style="background:var(--cream);padding:20px 56px;border-bottom:1px solid var(--line-cream);">
+    <div class="services-inner" style="display:grid;grid-template-columns:180px 1fr;gap:25px;align-items:center;">
+      <div class="services-head" style="display:flex;flex-direction:column;align-items:flex-start;gap:14px;">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:30px;line-height:1.05;color:var(--navy-900);text-transform:uppercase;letter-spacing:0.12em;">НАШІ<br>ПОСЛУГИ</h2>
+        <div class="title-divider" aria-hidden="true">
+          <span class="seg"></span>
+          <span class="diamond"></span>
+        </div>
       </div>
-
-      <!-- Domains -->
-      <div class="text-sm text-slate-500">
-        <p>gapta.com.ua · gapta.rivne.ua · gapta.rv.ua</p>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:16px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0;"><svg style="width:38px;height:38px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 5l13 5v10c0 8-6 13-13 15-7-2-13-7-13-15V10z"/></svg><div style="font-size:12px;line-height:1.35;color:var(--navy-900);font-weight:500;">Шеврони<br>та нашивки</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:32px;background:var(--gold);"></span><svg style="width:38px;height:38px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 7l-9 4 3 7 4-1v17h16V17l4 1 3-7-9-4-3 3a4 4 0 01-6 0z"/></svg><div style="font-size:12px;line-height:1.35;color:var(--navy-900);font-weight:500;">Вишивка<br>на одязі</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:32px;background:var(--gold);"></span><svg style="width:38px;height:38px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><g transform="translate(20 20)"><ellipse cx="0" cy="-9" rx="3.2" ry="7"/><ellipse cx="0" cy="9" rx="3.2" ry="7"/><ellipse cx="-9" cy="0" rx="7" ry="3.2"/><ellipse cx="9" cy="0" rx="7" ry="3.2"/><ellipse cx="-6.4" cy="-6.4" rx="3.2" ry="7" transform="rotate(-45)"/><ellipse cx="6.4" cy="6.4" rx="3.2" ry="7" transform="rotate(-45)"/><ellipse cx="-6.4" cy="6.4" rx="3.2" ry="7" transform="rotate(45)"/><ellipse cx="6.4" cy="-6.4" rx="3.2" ry="7" transform="rotate(45)"/><circle cx="0" cy="0" r="2.2"/></g></svg><div style="font-size:12px;line-height:1.35;color:var(--navy-900);font-weight:500;">Фірмова<br>вишивка</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:32px;background:var(--gold);"></span><svg style="width:38px;height:38px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 6l-7 4 2 8 4-1v17h14V17l4 1 2-8-7-4M14 6l3 3a4 4 0 006 0l3-3M14 6h12M20 13v22"/></svg><div style="font-size:12px;line-height:1.35;color:var(--navy-900);font-weight:500;">Брендована<br>уніформа</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:32px;background:var(--gold);"></span><svg style="width:38px;height:38px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5" y="8" width="30" height="20" rx="1"/><path d="M14 32h12M16 28v4M24 28v4"/><circle cx="20" cy="18" r="3"/></svg><div style="font-size:12px;line-height:1.35;color:var(--navy-900);font-weight:500;">Диджиталізація<br>та розробка</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:32px;background:var(--gold);"></span><svg style="width:38px;height:38px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 5l13 6v18l-13 6-13-6V11z"/><path d="M7 11l13 6 13-6M20 17v18"/></svg><div style="font-size:12px;line-height:1.35;color:var(--navy-900);font-weight:500;">Оптове<br>виробництво</div></div>
+      </div>
+      <div style="grid-column:1/-1;margin-top:1px;display:flex;justify-content:space-between;align-items:center;gap:24px;">
+        <div aria-hidden="true" style="display:flex;align-items:center;gap:10px;">
+          <span style="width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;display:inline-block;"></span>
+          <span style="width:60px;height:1px;background:var(--gold);opacity:0.6;display:inline-block;"></span>
+        </div>
+        <a href="#contact" style="color:var(--navy-900);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:12px;">Усі послуги →</a>
       </div>
     </div>
-  </main>
+    <style>
+      @media (max-width: 1100px) {
+        #services { padding: 60px 36px !important; }
+        #services .services-inner { grid-template-columns: 1fr !important; gap: 36px !important; }
+        #services .services-inner > div:nth-child(2) { grid-template-columns: repeat(3,1fr) !important; gap: 24px !important; }
+      }
+      @media (max-width: 640px) {
+        #services { padding: 44px 22px !important; }
+        #services .services-inner > div:nth-child(2) { grid-template-columns: repeat(2,1fr) !important; gap: 22px !important; }
+      }
+    </style>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process" data-screen-label="Process" style="background:var(--navy-900);color:var(--cream);padding:15px 56px;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;right:0;top:0;bottom:0;width:50%;background:url('/assets/process-floral.png') no-repeat right bottom / auto 100%;opacity:0.85;pointer-events:none;z-index:0;"></div>
+    <div style="position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;">
+      <div>
+        <span class="eyebrow" style="color:var(--gold);opacity:1;">Процес</span>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:200;font-size:32px;line-height:1.1;color:var(--gold-2);margin-top:5px;">Майстерність<br>у кожному етапі</h2>
+        <p style="margin-top:10px;font-size:13px;line-height:1.7;color:rgba(244,239,228,0.72);">Від ідеї до готового виробу —<br>контроль якості на кожному кроці.</p>
+        <a href="#contact" style="margin-top:10px;display:inline-flex;align-items:center;gap:14px;color:var(--gold-2);font-size:10px;letter-spacing:0.26em;text-transform:uppercase;text-decoration:none;font-weight:600;">Дивитися як ми працюємо →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,220px));gap:4px;align-content:start;padding-top:4px;">
+        <div style="position:relative;padding-left:38px;">
+          <span style="position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--gold-2);opacity:1;"></span>
+          <div style="font-family:'Playfair Display',serif;font-size:55px;color:var(--gold);line-height:1;font-weight:200;opacity:0.35;">01</div>
+          <h3 style="margin-top:8px;font-family:'Playfair Display',serif;font-weight:100;font-size:16px;color:var(--cream);letter-spacing:0.01em;">Дизайн</h3>
+          <p style="margin-top:8px;font-size:12px;line-height:1.65;color:rgba(244,239,228,0.65);">Розробляємо макет<br>та підбираємо рішення</p>
+        </div>
+        <div style="position:relative;padding-left:38px;">
+          <span style="position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--gold);opacity:0.35;"></span>
+          <div style="font-family:'Playfair Display',serif;font-size:55px;color:var(--gold);line-height:1;font-weight:200;opacity:0.35;">02</div>
+          <h3 style="margin-top:8px;font-family:'Playfair Display',serif;font-weight:100;font-size:16px;color:var(--cream);letter-spacing:0.01em;">Диджиталізація</h3>
+          <p style="margin-top:8px;font-size:12px;line-height:1.65;color:rgba(244,239,228,0.65);">Точна програма<br>для бездоганного<br>результату</p>
+        </div>
+        <div style="position:relative;padding-left:38px;">
+          <span style="position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--gold);opacity:0.35;"></span>
+          <div style="font-family:'Playfair Display',serif;font-size:55px;color:var(--gold);line-height:1;font-weight:200;opacity:0.35;">03</div>
+          <h3 style="margin-top:8px;font-family:'Playfair Display',serif;font-weight:100;font-size:16px;color:var(--cream);letter-spacing:0.01em;">Вишивка</h3>
+          <p style="margin-top:8px;font-size:12px;line-height:1.65;color:rgba(244,239,228,0.65);">Сучасне обладнання<br>та якісні матеріали</p>
+        </div>
+        <div style="position:relative;padding-left:38px;">
+          <span style="position:absolute;left:0;top:4px;bottom:4px;width:1px;background:var(--gold);opacity:0.35;"></span>
+          <div style="font-family:'Playfair Display',serif;font-size:55px;color:var(--gold);line-height:1;font-weight:200;opacity:0.35;">04</div>
+          <h3 style="margin-top:8px;font-family:'Playfair Display',serif;font-weight:100;font-size:16px;color:var(--cream);letter-spacing:0.01em;">Контроль якості</h3>
+          <p style="margin-top:8px;font-size:12px;line-height:1.65;color:rgba(244,239,228,0.65);">Перевірка кожної деталі<br>перед відправкою</p>
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 1100px) {
+        #process { padding: 70px 36px !important; }
+        #process > div { grid-template-columns: 1fr !important; gap: 40px !important; }
+        #process > div > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 32px !important; }
+      }
+      @media (max-width: 640px) {
+        #process { padding: 50px 22px !important; }
+        #process > div > div:first-child h2 { font-size: 30px !important; }
+        #process > div > div:last-child { grid-template-columns: 1fr !important; gap: 28px !important; }
+      }
+    </style>
+  </section>
+
+  <!-- ============ MATERIALS ============ -->
+  <section class="materials" id="materials" data-screen-label="Materials" style="background:var(--cream-2);padding:10px 60px;">
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:60px;align-items:center;">
+      <div>
+        <span class="eyebrow" style="color:var(--navy-900);opacity:0.85;">Матеріали</span>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:200;font-size:30px;line-height:1.1;color:var(--navy-900);margin-top:20px;">Преміальні тканини<br>та нитки</h2>
+        <p style="margin-top:10px;font-size:13px;line-height:1.7;color:rgba(20,28,50,0.7);">Працюємо з перевіреними матеріалами,<br>що забезпечують довговічність, насиченість<br>кольору та бездоганний вигляд.</p>
+        <a href="#contact" style="margin-top:20px;display:inline-flex;align-items:center;gap:14px;color:var(--navy-900);font-size:13px;letter-spacing:0.26em;text-transform:uppercase;text-decoration:none;font-weight:600;">Переглянути матеріали →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;position:relative;">
+        <div style="aspect-ratio:4/4;background:url('/assets/mat-1.png') center/cover no-repeat;background-color:var(--navy-800);"></div>
+        <div style="aspect-ratio:4/4;background:url('/assets/mat-2.png') center/cover no-repeat;background-color:var(--navy-800);"></div>
+        <div style="aspect-ratio:4/4;background:url('/assets/mat-3.png') center/cover no-repeat;background-color:var(--navy-800);"></div>
+        <div style="aspect-ratio:4/4;background:url('/assets/mat-4.png') center/cover no-repeat;background-color:var(--navy-800);"></div>
+        <div style="position:absolute;right:-64px;bottom:16px;background:var(--navy-900);color:var(--gold-2);border:1px solid var(--gold-2);padding:18px 22px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;line-height:1.7;font-weight:500;z-index:20;">
+          Якість у деталях<br>вишивка, що говорить<br>про ваш бренд
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 1100px) {
+        #materials { padding: 60px 36px !important; }
+        #materials > div { grid-template-columns: 1fr !important; gap: 36px !important; }
+        #materials > div > div:last-child { grid-template-columns: repeat(4,1fr) !important; }
+        #materials > div > div:last-child > div:last-child { right: 0 !important; }
+      }
+      @media (max-width: 640px) {
+        #materials { padding: 50px 22px !important; }
+        #materials > div > div:first-child h2 { font-size: 28px !important; }
+        #materials > div > div:last-child { grid-template-columns: repeat(2,1fr) !important; }
+        #materials > div > div:last-child > div:last-child { right: 0 !important; bottom: 8px !important; padding: 12px 14px !important; font-size: 9px !important; }
+      }
+    </style>
+  </section>
+
+  <!-- ============ PORTFOLIO ============ -->
+  <section class="portfolio" id="portfolio" data-screen-label="Portfolio" style="background:var(--navy-900);padding:25px 56px;position:relative;">
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center;">
+      <div>
+        <span class="eyebrow" style="color:var(--gold-2);">Портфоліо</span>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:400;font-size:33px;line-height:1.05;color:var(--gold-2);margin-top:10px;">Обрані роботи</h2>
+        <p style="margin-top:24px;font-size:12px;line-height:1.65;color:var(--cream);">Кожен проєкт — це унікальне рішення,<br>створене з увагою до стилю та характеру бренду.</p>
+        <a href="#portfolio" style="margin-top:10px;display:inline-flex;align-items:center;gap:14px;color:var(--gold-2);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;font-weight:200;">Дивитися всі роботи →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;">
+        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:url('/assets/hero-shield.png') 30% 50%/220% auto var(--navy-800);overflow:hidden;"></div>
+        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:var(--cream-3);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:38px;color:var(--navy-900);">Сапта</span>
+        </div>
+        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:linear-gradient(135deg,#1a2438 0%,#0a1224 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <span style="color:var(--cream);font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:0.24em;text-transform:uppercase;font-weight:600;text-align:center;padding:0 14px;">Your<br>Brand</span>
+        </div>
+        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:linear-gradient(135deg,#0a1224 0%,#1a2b4a 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+          <span style="color:var(--cream);font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;line-height:1.3;text-align:center;padding:0 14px;">Mountain<br>Expedition</span>
+        </div>
+        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:url('/assets/hero-machine.png') center/cover var(--navy-800);overflow:hidden;"></div>
+        <button aria-label="Попередній" style="position:absolute;top:50%;transform:translateY(-50%);left:-22px;width:44px;height:44px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:18px;cursor:pointer;z-index:5;">‹</button>
+        <button aria-label="Наступний" style="position:absolute;top:50%;transform:translateY(-50%);right:-22px;width:44px;height:44px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:18px;cursor:pointer;z-index:5;">›</button>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 1100px) {
+        #portfolio { padding: 60px 36px !important; }
+        #portfolio > div { grid-template-columns: 1fr !important; gap: 36px !important; }
+        #portfolio > div > div:last-child { grid-template-columns: repeat(4,1fr) !important; }
+        #portfolio > div > div:last-child > div:nth-child(5) { display: none !important; }
+        #portfolio > div > div:last-child button.pf-arrow-left { left: 12px !important; }
+      }
+      @media (max-width: 640px) {
+        #portfolio { padding: 50px 22px !important; }
+        #portfolio > div > div:first-child h2 { font-size: 28px !important; }
+        #portfolio > div > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 10px !important; }
+        #portfolio > div > div:last-child > div:nth-child(n+5) { display: none !important; }
+        #portfolio > div > div:last-child button { display: none !important; }
+      }
+    </style>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section id="about" data-screen-label="Trust" style="background:var(--cream-2);padding:28px 56px;">
+    <div style="display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;">
+      <div>
+        <h2 style="font-family:'Playfair Display',sans-serif;font-weight:400;font-size:23px;line-height:1.1;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy-900);">Нам довіряють</h2>
+        <div aria-hidden="true" style="display:flex;align-items:center;gap:10px;margin-top:14px;">
+          <span style="width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;display:inline-block;"></span>
+          <span style="width:60px;height:1px;background:var(--gold);opacity:0.6;display:inline-block;"></span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
+        <div style="display:flex;align-items:center;gap:18px;padding:4px 28px;border-left:1px solid var(--line-cream);">
+          <svg style="width:60px;height:60px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 50c-8-2-14-9-15-19 4 0 8 1 11 4"/><path d="M32 50c8-2 14-9 15-19-4 0-8 1-11 4"/><path d="M19 26c-2-3-2-7-1-11 4 1 7 3 9 6"/><path d="M45 26c2-3 2-7 1-11-4 1-7 3-9 6"/><path d="M24 18c0-3 1-6 3-8 2 2 3 5 3 8"/><path d="M40 18c0-3-1-6-3-8-2 2-3 5-3 8"/><path d="M28 50h8"/><path d="M32 50v6"/><path d="M28 56h8"/></svg>
+          <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--navy-900);line-height:1;">500+</div><div style="margin-top:6px;font-size:11px;color:rgba(20,28,50,0.65);line-height:1.4;">брендів</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:4px 28px;border-left:1px solid var(--line-cream);">
+          <svg style="width:60px;height:60px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="22" r="6"/><circle cx="16" cy="26" r="5"/><circle cx="48" cy="26" r="5"/><path d="M22 44c0-5 4-9 10-9s10 4 10 9v4H22z"/><path d="M6 46c0-4 3-8 8-9 1 0 2 0 3 1"/><path d="M58 46c0-4-3-8-8-9-1 0-2 0-3 1"/></svg>
+          <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--navy-900);line-height:1;">5/5</div><div style="margin-top:6px;font-size:11px;color:rgba(20,28,50,0.65);line-height:1.4;">середня оцінка<br>клієнтів</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:4px 28px;border-left:1px solid var(--line-cream);">
+          <svg style="width:60px;height:60px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="14" width="44" height="40" rx="2"/><path d="M10 24h44"/><path d="M20 10v8"/><path d="M44 10v8"/><circle cx="32" cy="38" r="8"/><path d="M32 33v5l3 2"/></svg>
+          <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--navy-900);line-height:1;">10+</div><div style="margin-top:6px;font-size:11px;color:rgba(20,28,50,0.65);line-height:1.4;">років досвіду</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;padding:4px 28px;border-left:1px solid var(--line-cream);">
+          <svg style="width:60px;height:60px;flex-shrink:0;color:var(--navy-900);" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 8 14 14v14c0 12 8 22 18 26 10-4 18-14 18-26V14L32 8z"/><path d="M32 22v18"/><path d="M24 31h16"/></svg>
+          <div><div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--navy-900);line-height:1;">100%</div><div style="margin-top:6px;font-size:11px;color:rgba(20,28,50,0.65);line-height:1.4;">контроль якості<br>на всіх етапах</div></div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @media (max-width: 1100px) {
+        #about { padding: 50px 36px !important; }
+        #about > div { grid-template-columns: 1fr !important; gap: 32px !important; }
+        #about > div > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 24px !important; }
+        #about > div > div:last-child > div:nth-child(3) { border-left: none !important; padding-left: 0 !important; }
+      }
+      @media (max-width: 640px) {
+        #about { padding: 40px 22px !important; }
+        #about > div > div:first-child h2 { font-size: 22px !important; }
+        #about > div > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 18px !important; }
+        #about > div > div:last-child > div { padding-left: 14px !important; gap: 12px !important; }
+        #about > div > div:last-child > div:nth-child(odd) { border-left: none !important; padding-left: 0 !important; }
+        #about > div > div:last-child > div > div > div:first-child { font-size: 28px !important; }
+      }
+    </style>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="contact" data-screen-label="CTA">
+    <div class="cta-grid">
+      <img class="cta-deco" src="/assets/cta-floral.png" alt="" aria-hidden="true" />
+      <div class="cta-center">
+        <h2>Готові створити щось особливе?</h2>
+        <p>Розкажіть про свій проєкт — ми підберемо краще рішення<br>та втілимо його в ідеальній вишивці.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:hello@gapta.ua">Отримати розрахунок</a>
+        <a class="btn btn-ghost" href="tel:+380000000000">Зв'язатися з нами</a>
+      </div>
+      <div class="cta-seal" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div>© 2025 Студія ГАПТА · Усі права захищені</div>
+    <div class="socials">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.6 4.2 2.9 11c-1.2.5-1.2 1.2-.2 1.5l4.5 1.4 1.7 5.3c.2.6.4.8 1 .8.4 0 .6-.2.9-.5l2.4-2.3 4.6 3.4c.9.5 1.5.2 1.7-.8L21.7 5.4c.3-1.3-.4-1.9-1.1-1.2zm-3.2 4-7.7 7-.3 3.2-1.4-4.2 9-5.7c.4-.3.7.1.4.4z"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2.6H8.4v3h2.5V21h2.6z"/>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('nav-burger');
+    const menu = document.getElementById('mobile-menu');
+    if (burger && menu) {
+      burger.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      });
+    }
+  </script>
 </BaseLayout>

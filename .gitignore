@@ -28,7 +28,6 @@ pnpm-debug.log*
 CLAUDE.md
 tasks.md
 .claude/
-.cursor/
 .vscode/
 AGENTS.md
 docs/
