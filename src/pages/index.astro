@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="ГАПТА — Студія машинної вишивки">
   <!-- ============ HERO ============ -->
-  <section class="hero" data-screen-label="Hero" style="position:relative;background:var(--navy-900);color:var(--cream);overflow:hidden;">
+  <section class="hero-section" data-screen-label="Hero" style="position:relative;background:var(--navy-900);color:var(--cream);overflow:hidden;">
     <div class="hero-bg" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;right:360px;background-image:url('/assets/hero-shield.png');background-size:cover;background-position:left center;"></div>
     <div class="hero-bg-overlay" aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,19,38,0) 0%,rgba(11,19,38,0) 35%,rgba(11,19,38,0.55) 70%,rgba(11,19,38,0.85) 100%);"></div>
 
@@ -63,11 +63,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <a class="btn btn-primary" href="#contact">Замовити вишивку</a>
           <a class="btn btn-ghost" href="#portfolio">Переглянути роботи</a>
         </div>
-        <div class="hero-seal" aria-label="Печатка ГАПТА" style="position:absolute;left:5%;bottom:50px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9a66b 0%,#8a6b3a 70%,#5a4524 100%);box-shadow:0 8px 22px rgba(0,0,0,0.45),inset 0 1px 2px rgba(255,220,160,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2b1f0e;font-family:'Playfair Display',serif;text-align:center;z-index:5;">
-          <span style="font-size:8px;letter-spacing:0.32em;text-transform:uppercase;font-weight:600;opacity:0.85;">СТУДІЯ</span>
-          <span style="font-size:28px;line-height:1;margin:4px 0;color:#3a2a14;">✿</span>
-          <span style="font-size:13px;letter-spacing:0.28em;font-weight:600;color:#2b1f0e;">ГАПТА</span>
-        </div>
+        <img class="hero-seal-img" src="/assets/seal-gapta.png" alt="Печатка ГАПТА" style="position:absolute;left:5%;bottom:50px;width:110px;height:110px;">
       </div>
 
       <aside class="hero-rail" style="grid-column:2;position:relative;display:flex;flex-direction:column;z-index:5;">
@@ -81,28 +77,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </a>
         </div>
         <div aria-hidden="true" style="flex:0 0 auto;height:300px;min-height:300px;background-image:url('/assets/hero-machine.png');background-size:cover;background-position:center;border-left:1px solid var(--line);border-top:1px solid var(--line);position:relative;">
-          <div style="position:absolute;left:24px;bottom:24px;width:86px;height:86px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#c9a66b 0%,#8a6b3a 70%,#5a4524 100%);box-shadow:0 6px 16px rgba(0,0,0,0.5),inset 0 1px 2px rgba(255,220,160,0.5);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#2b1f0e;text-align:center;">
-            <span style="font-size:6px;letter-spacing:0.3em;text-transform:uppercase;font-weight:700;opacity:0.9;">СТУДІЯ</span>
-            <span style="font-size:20px;margin:2px 0;">✿</span>
-            <span style="font-family:'Playfair Display',serif;font-size:10px;letter-spacing:0.28em;font-weight:700;">ГАПТА</span>
-          </div>
+          <img src="/assets/seal-gapta.png" alt="Печатка ГАПТА" style="position:absolute;left:24px;bottom:24px;width:86px;height:86px;">
         </div>
       </aside>
     </div>
 
     <style>
       @media (max-width: 1100px) {
-        .hero .hero-bg { right: 0 !important; }
+        .hero-section .hero-bg { right: 0 !important; }
         .hero-grid { grid-template-columns: 1fr !important; }
         .hero-center { padding: 80px 36px 60px !important; min-height: 560px; align-items: center !important; padding-left: 36px !important; }
-        .hero-seal { left: 24px !important; bottom: 24px !important; width: 90px !important; height: 90px !important; }
+        .hero-seal-img { left: 24px !important; bottom: 24px !important; width: 90px !important; height: 90px !important; }
         .hero-rail { grid-column: 1 !important; flex-direction: row !important; }
         .hero-rail .rail-card { padding: 34px 36px !important; border-left: none !important; border-top: 1px solid var(--line) !important; flex: 1 !important; }
         .hero-rail > div:last-child { width: 320px !important; height: auto !important; min-height: 260px !important; border-left: 1px solid var(--line) !important; border-top: 1px solid var(--line) !important; }
       }
       @media (max-width: 640px) {
         .hero-center { padding: 40px 22px 50px !important; min-height: 500px !important; }
-        .hero-seal { display: none !important; }
+        .hero-seal-img { display: none !important; }
         .hero-rail { flex-direction: column !important; }
         .hero-rail .rail-card { padding: 28px 22px !important; }
         .hero-rail .rail-card h2 { font-size: 30px !important; }
