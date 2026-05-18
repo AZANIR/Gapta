@@ -1,0 +1,77 @@
+---
+description: Git branching strategy and Conventional Commits for GAPTA
+alwaysApply: true
+---
+
+# Git Workflow
+
+## Branch Policy
+
+**NEVER commit directly to `master`.** All work happens on feature branches.
+
+### Branch Naming
+
+| Type | Pattern | Example |
+|---|---|---|
+| Feature | `feat/{short-description}` | `feat/add-search-filters` |
+| Bug fix | `fix/{short-description}` | `fix/broken-og-image` |
+| Design/UI | `style/{short-description}` | `style/card-hover-effects` |
+| Docs | `docs/{short-description}` | `docs/update-readme` |
+| Refactor | `refactor/{short-description}` | `refactor/layout-components` |
+| CI/CD | `ci/{short-description}` | `ci/optimize-docker-build` |
+
+Use lowercase, hyphens as separators. Keep branch names short (2-4 words).
+
+### Before Starting Work
+
+1. Check current branch: `git branch --show-current`
+2. If on `master` — create and switch to a new branch before making changes
+3. Pull latest master first: `git pull origin master`
+4. Create branch: `git checkout -b {type}/{description}`
+
+## Conventional Commits
+
+All commit messages follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+
+### Format
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Types
+
+| Type | When to use |
+|---|---|
+| `feat` | New feature |
+| `fix` | Bug fix |
+| `docs` | Documentation only |
+| `style` | CSS, design, formatting (no logic change) |
+| `refactor` | Code restructuring (no feature/fix) |
+| `perf` | Performance improvement |
+| `test` | Adding or updating tests |
+| `ci` | CI/CD pipeline changes |
+| `chore` | Maintenance, dependency updates, config |
+
+### Scopes (optional)
+
+| Scope | Applies to |
+|---|---|
+| `ui` | Frontend components |
+| `layout` | Astro layouts |
+| `seo` | Meta tags, schema.org |
+| `config` | Project configuration |
+| `deps` | Dependencies |
+| `docker` | Docker/deploy infrastructure |
+
+### Rules
+
+- Description starts with lowercase verb (add, fix, update, remove, refactor)
+- Max 72 characters for the first line
+- No period at the end of the description
+- Body explains **why**, not **what**
+- Use `BREAKING CHANGE:` footer when introducing breaking changes
