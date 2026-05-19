@@ -161,13 +161,6 @@ img { display: block; max-width: 100%; }
 .btn-dark:hover { background: var(--navy-800); }
 
 /* ===== Decorative dividers ===== */
-.title-divider { display: flex; align-items: center; gap: 10px; width: 110px; }
-.title-divider .seg { flex: 1; height: 1px; background: var(--navy-900); opacity: 0.4; }
-.title-divider .diamond {
-  width: 7px; height: 7px;
-  background: var(--navy-900);
-  transform: rotate(45deg);
-}
 .gold-divider { display: flex; align-items: center; gap: 10px; }
 .gold-divider .diamond {
   width: 7px; height: 7px;
