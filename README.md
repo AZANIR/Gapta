@@ -36,7 +36,10 @@ npm run preview    # превью збірки
 
 ## Деплой
 
-Автоматичний при push в `main` через GitHub Actions.
+Автоматичний при push в `master` через GitHub Actions.
+
+Пайплайн: CI будує Docker-образ → пушить в GHCR → SSH на сервер → pull + restart контейнера.
+Сервер не потребує доступу до GitHub — образ приходить з GHCR через CI.
 
 ### GitHub Secrets (Settings → Secrets → Actions):
 
@@ -44,30 +47,21 @@ npm run preview    # превью збірки
 |--------|----------|
 | `SERVER_HOST` | `89.167.79.114` |
 | `SERVER_USER` | `root` |
-| `SERVER_SSH_KEY` | Приватний SSH-ключ |
+| `SERVER_SSH_KEY` | Приватний SSH-ключ (для входу на сервер) |
 
 ## Налаштування на сервері (one-time)
 
-### 1. Клонувати репо
+### 1. Переконатися що Docker встановлено
 
 ```bash
-mkdir -p /opt/docker/blog-gapta
-git clone git@github.com:AZANIR/gapta.git /opt/docker/blog-gapta/repo
+docker --version
+docker compose version
 ```
 
-### 2. Додати сервіс в docker-compose.yml
+### 2. Створити мережу `web` (якщо не існує)
 
-В `/opt/docker/docker-compose.yml` додати:
-
-```yaml
-  blog-gapta:
-    build:
-      context: ./blog-gapta/repo
-      dockerfile: Dockerfile
-    container_name: blog-gapta
-    restart: unless-stopped
-    networks:
-      - web
+```bash
+docker network create web 2>/dev/null || true
 ```
 
 ### 3. Додати домени в Caddyfile
@@ -85,15 +79,16 @@ gapta.rv.ua, www.gapta.rv.ua {
 }
 ```
 
-
-### 4. Запустити
+### 4. Перезавантажити Caddy
 
 ```bash
-cd /opt/docker
-docker compose build blog-gapta
-docker compose up -d blog-gapta
 docker exec caddy caddy reload --config /etc/caddy/Caddyfile
 ```
+
+### Примітка
+
+Контейнер `blog-gapta` управляється безпосередньо через `docker run` (не через docker-compose),
+тому `git clone` репозиторію на сервері більше не потрібен.
 
 ## Структура проєкту
 

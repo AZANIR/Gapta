@@ -5,18 +5,49 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
     steps:
-      - name: Deploy via SSH
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/azanir/gapta:latest
+
+      - name: Deploy to Hetzner
         uses: appleboy/ssh-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          envs: GITHUB_TOKEN,GITHUB_ACTOR
           script: |
-            cd /opt/docker/blog-gapta/repo
-            git pull origin master
-            cd /opt/docker
-            docker compose build blog-gapta
-            docker compose up -d blog-gapta
+            echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+            docker pull ghcr.io/azanir/gapta:latest
+            docker stop blog-gapta 2>/dev/null || true
+            docker rm blog-gapta 2>/dev/null || true
+            docker network create web 2>/dev/null || true
+            docker run -d \
+              --name blog-gapta \
+              --restart unless-stopped \
+              --network web \
+              ghcr.io/azanir/gapta:latest
+            docker image prune -f
