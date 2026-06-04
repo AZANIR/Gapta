@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import ctaFloral from '../assets/cta-floral.png';
 ---
 
 <BaseLayout title="ГАПТА — Студія машинної вишивки">
@@ -313,7 +315,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- ============ CTA ============ -->
   <section class="cta" id="contact" data-screen-label="CTA">
     <div class="cta-grid">
-      <img class="cta-deco" src="/assets/cta-floral.png" alt="" aria-hidden="true" />
+      <Image src={ctaFloral} alt="" aria-hidden="true" loading="lazy" class="cta-deco" />
       <div class="cta-center">
         <h2>Готові створити щось особливе?</h2>
         <p>Розкажіть про свій проєкт — ми підберемо краще рішення<br>та втілимо його в ідеальній вишивці.</p>
