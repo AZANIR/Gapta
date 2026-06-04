@@ -1,0 +1,65 @@
+---
+description: MDX blog articles for Gapta (gapta.com.ua) — Ukrainian, embroidery
+globs: src/content/articles/**
+---
+
+# Article Writing Rules (Gapta)
+
+Applies when `src/content/articles/**` exists. Until then, use **gapta-article-writer** skill and [AGENTS.md](../../AGENTS.md) as the target contract.
+
+## File structure
+
+`src/content/articles/{slug}/index.mdx` — slug: Latin `kebab-case` (e.g. `vybir-stabilizatora`).
+
+```
+src/content/articles/{slug}/
+├── index.mdx
+├── imgs/
+│   └── cover.avif
+└── components/     # optional, when React is in the project
+```
+
+## Draft vs publish
+
+Before setting draft/publish in frontmatter, **ask the user**. Field names (`draft`, `isDraft`, etc.) must match the real Astro collection schema.
+
+## Frontmatter (template — align with code)
+
+```yaml
+---
+draft: true
+title: ""           # Ukrainian, SEO; length per project schema
+description: ""     # Meta description
+cover: "./imgs/cover.avif"
+coverAlt: ""
+category: obladnannya   # embroidery-related category id
+author: leonid-m        # or authors: [] if schema uses array
+publishedTime: "2026-04-03T00:00:00.000Z"
+---
+```
+
+### Category examples (embroidery)
+
+`obladnannya`, `nythky-polotno`, `digitizing`, `prohramne`, `oglyady`, `porady` — adjust to real category IDs in the repo.
+
+### Authors
+
+Default author id: `leonid-m` unless others exist in `src/content/authors/`.
+
+## MDX body
+
+- **Language:** Ukrainian for prose headings and paragraphs
+- **Headings:** `##` / `###` in body; no extra `#` h1 if the layout already sets the title
+- **React:** import from `./components/…` with `client:load` / `client:visible` when React is available
+- Short paragraphs, lists, fenced code with language tags
+
+## SEO
+
+- Keywords natural in title, description, headings
+- Internal links to other **Gapta** articles when they exist
+- Alt text in Ukrainian for images
+
+## Images
+
+- Store under `./imgs/`; prefer AVIF or WebP
+- `cover` path relative to `index.mdx`
