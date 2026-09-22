@@ -1,0 +1,147 @@
+---
+const works = [
+  { src: '/images/work-1.png', caption: 'Кепка Mountain Expedition' },
+  { src: '/images/work-2.png', caption: 'Логотип ГАПТА на льоні' },
+  { src: '/images/work-3.png', caption: 'Патч Your Brand' },
+  { src: '/images/work-4.png', caption: 'Авторський орнамент' },
+  { src: '/images/work-5.png', caption: 'Шеврон із тризубом' },
+];
+---
+
+<section class="portfolio" id="portfolio">
+  <div class="container">
+    <div class="portfolio__head">
+      <h2 class="portfolio__heading">ОБРАНІ РОБОТИ</h2>
+      <a href="/portfolio" class="portfolio__link">
+        Переглянути портфоліо
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M0 6h16M11 1l5 5-5 5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="portfolio__grid">
+      {
+        works.map((w) => (
+          <figure class="portfolio__item">
+            <img src={w.src} alt={w.caption} loading="lazy" />
+            <figcaption class="portfolio__caption">{w.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    background: var(--cream);
+    padding: 72px 0 88px;
+  }
+
+  .portfolio__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 34px;
+  }
+
+  .portfolio__heading {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--navy);
+  }
+
+  .portfolio__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+    transition: gap 0.2s ease;
+  }
+
+  .portfolio__link:hover {
+    gap: 16px;
+  }
+
+  .portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .portfolio__item {
+    position: relative;
+    overflow: hidden;
+    height: 260px;
+    background: var(--cream-dark);
+  }
+
+  .portfolio__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .portfolio__item:hover img {
+    transform: scale(1.06);
+  }
+
+  .portfolio__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 14px 16px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(180deg, rgba(14, 23, 48, 0) 0%, rgba(14, 23, 48, 0.78) 100%);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .portfolio__item:hover .portfolio__caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 1024px) {
+    .portfolio__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .portfolio__item:nth-child(4),
+    .portfolio__item:nth-child(5) {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .portfolio__head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .portfolio__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio__item {
+      height: 220px;
+    }
+  }
+</style>

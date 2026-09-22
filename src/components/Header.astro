@@ -1,0 +1,154 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const navItems = [
+  { label: 'Магазин', href: '/shop', path: '/shop' },
+  { label: 'Портфоліо', href: '/portfolio', path: '/portfolio' },
+  { label: 'Процес', href: '/#stats', path: null },
+  { label: 'Матеріали', href: '/#features', path: null },
+  { label: 'Про нас', href: '/#cta', path: null },
+  { label: 'Контакти', href: '/contacts', path: '/contacts' },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="brand" aria-label="ГАПТА — студія машинної вишивки">
+      <span class="brand__logo">ГАПТА</span>
+      <span class="brand__tagline">СТУДІЯ МАШИННОЇ<br />ВИШИВКИ</span>
+    </a>
+
+    <nav class="nav" aria-label="Основна навігація">
+      {
+        navItems.map((item) => {
+          const active = item.path !== null && pathname === item.path;
+          return (
+            <a href={item.href} class:list={[{ 'nav__link--active': active }]} aria-current={active ? 'page' : undefined}>
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <a href="/order" class="btn btn--navy site-header__cta">Отримати розрахунок</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    height: 84px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .brand__logo {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .brand__tagline {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.45;
+    border-left: 1px solid var(--line);
+    padding-left: 14px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+  }
+
+  .nav a {
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--navy);
+    transition: color 0.2s ease;
+  }
+
+  .nav a:hover {
+    color: var(--gold);
+  }
+
+  .nav .nav__link--active {
+    color: var(--gold);
+    position: relative;
+  }
+
+  .nav .nav__link--active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .site-header__cta {
+    padding: 14px 22px;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1100px) {
+    .nav {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .nav {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .site-header__inner {
+      height: 72px;
+      gap: 16px;
+    }
+
+    .brand__logo {
+      font-size: 1.35rem;
+    }
+
+    .brand__tagline {
+      display: none;
+    }
+
+    .site-header__cta {
+      padding: 12px 14px;
+      font-size: 0.62rem;
+    }
+  }
+</style>

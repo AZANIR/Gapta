@@ -1,0 +1,424 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import Footer from '../components/Footer.astro';
+
+const steps = [
+  { n: '01', title: 'Заявка', text: 'Залишаєте заявку або телефонуєте' },
+  { n: '02', title: 'Макет', text: 'Диджиталізуємо ваш дизайн' },
+  { n: '03', title: 'Зразок', text: 'Погоджуємо контрольний зразок' },
+  { n: '04', title: 'Виробництво', text: 'Виготовлення 1–3 дні та доставка' },
+];
+
+const benefits = [
+  {
+    title: 'Точність до 0,1 мм',
+    text: 'Промислове обладнання відтворює найдрібніші деталі дизайну.',
+    icon: 'precision',
+  },
+  {
+    title: 'Преміальні нитки Madeira/Gunold',
+    text: 'Стійкі кольори та благородний блиск на роки.',
+    icon: 'threads',
+  },
+  {
+    title: 'Тираж від 1 шт.',
+    text: 'Працюємо як із поодинокими замовленнями, так і з оптом.',
+    icon: 'batch',
+  },
+  {
+    title: 'Контроль якості на всіх етапах',
+    text: 'Перевіряємо кожен виріб перед відправкою.',
+    icon: 'quality',
+  },
+];
+
+const serviceTypes = [
+  'Шеврони та нашивки',
+  'Вишивка на одязі',
+  'Брендована уніформа',
+  'Диджиталізація макету',
+  'Оптове виробництво',
+];
+---
+
+<Layout
+  title="Замовити вишивку — ГАПТА | Розрахунок вартості за 1 день"
+  description="Замовте машинну вишивку в студії ГАПТА: шеврони, одяг, уніформа, диджиталізація макету. Тираж від 1 шт., виготовлення 1–3 дні. Залиште заявку — менеджер зв'яжеться протягом робочого дня."
+>
+  <Header />
+  <main>
+    <PageHero
+      image="/images/hero-bg.png"
+      overline="Індивідуальне замовлення"
+      title="Замовити вишивку"
+      crumb="Замовлення"
+    />
+
+    <section class="steps">
+      <div class="container">
+        <p class="overline steps__overline">Як ми працюємо</p>
+        <ol class="steps__list">
+          {
+            steps.map((s) => (
+              <li class="steps__item">
+                <span class="steps__number">{s.n}</span>
+                <h2 class="steps__title">{s.title}</h2>
+                <p class="steps__text">{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="order">
+      <div class="container order__grid">
+        <div class="order__benefits">
+          <p class="overline">Чому ГАПТА</p>
+          <h2 class="order__benefits-title">Якість, яку видно в кожному стібку</h2>
+          <ul class="order__benefits-list">
+            {
+              benefits.map((b) => (
+                <li class="benefit">
+                  <span class="benefit__icon" aria-hidden="true">
+                    {b.icon === 'precision' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                        <circle cx="12" cy="12" r="8.5" />
+                        <circle cx="12" cy="12" r="4.5" />
+                        <path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4" stroke-linecap="round" />
+                      </svg>
+                    )}
+                    {b.icon === 'threads' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                        <path d="M4 20c6 0 16-6 16-16M4 20c2-4 6-8 10-10M4 20h.01" stroke-linecap="round" />
+                        <circle cx="4" cy="20" r="1.6" />
+                      </svg>
+                    )}
+                    {b.icon === 'batch' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                        <rect x="3" y="10" width="8" height="8" rx="1.5" />
+                        <rect x="13" y="10" width="8" height="8" rx="1.5" />
+                        <rect x="8" y="3" width="8" height="8" rx="1.5" transform="translate(0 -1)" />
+                      </svg>
+                    )}
+                    {b.icon === 'quality' && (
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                        <path d="M12 2.5l7.5 3v6c0 4.8-3.2 8.4-7.5 10-4.3-1.6-7.5-5.2-7.5-10v-6l7.5-3Z" stroke-linejoin="round" />
+                        <path d="M8.5 11.5l2.5 2.5 4.5-4.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    )}
+                  </span>
+                  <span class="benefit__body">
+                    <span class="benefit__title">{b.title}</span>
+                    <span class="benefit__text">{b.text}</span>
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="order__form-wrap">
+          <h2 class="order__form-title">Розрахувати вартість</h2>
+          <form class="order__form" action="#" method="post" enctype="multipart/form-data">
+            <div class="field">
+              <label class="field__label" for="order-service">Тип послуги</label>
+              <select class="field__select" id="order-service" name="service">
+                {serviceTypes.map((s) => <option value={s}>{s}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-qty">Кількість</label>
+              <input class="field__input" type="number" id="order-qty" name="quantity" min="1" value="1" />
+            </div>
+            <div class="field">
+              <span class="field__label" id="order-file-label">Завантажити макет</span>
+              <label class="file-drop" for="order-file" aria-labelledby="order-file-label">
+                <svg class="file-drop__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+                  <path d="M12 16V4M7 9l5-5 5 5" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M4 16v3.5A1.5 1.5 0 0 0 5.5 21h13a1.5 1.5 0 0 0 1.5-1.5V16" stroke-linecap="round" />
+                </svg>
+                <span class="file-drop__text">Оберіть файл або перетягніть його сюди</span>
+                <span class="file-drop__note">PNG, JPG, PDF, DST до 25 МБ</span>
+                <input class="file-drop__input" type="file" id="order-file" name="artwork" accept=".png,.jpg,.jpeg,.pdf,.dst" />
+              </label>
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-name">Ім'я <sup>*</sup></label>
+              <input class="field__input" type="text" id="order-name" name="name" required autocomplete="name" placeholder="Ваше ім'я" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-phone">Телефон <sup>*</sup></label>
+              <input class="field__input" type="tel" id="order-phone" name="phone" required autocomplete="tel" placeholder="+38 (___) ___ __ __" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-email">Email</label>
+              <input class="field__input" type="email" id="order-email" name="email" autocomplete="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label class="field__label" for="order-comment">Коментар</label>
+              <textarea class="field__textarea" id="order-comment" name="comment" placeholder="Деталі замовлення: розміри, кольори, терміни"></textarea>
+            </div>
+            <button type="submit" class="btn btn--gold order__submit">Отримати розрахунок</button>
+            <p class="order__form-note">Менеджер зв'яжеться з вами протягом робочого дня</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .steps {
+    padding: 72px 0 64px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .steps__overline {
+    margin-bottom: 36px;
+  }
+
+  .steps__list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    position: relative;
+  }
+
+  .steps__list::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196, 162, 101, 0.55) 12%, rgba(196, 162, 101, 0.55) 88%, transparent);
+  }
+
+  .steps__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 0 8px;
+  }
+
+  .steps__number {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 8px;
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .steps__title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .steps__text {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .order {
+    padding: 72px 0 88px;
+  }
+
+  .order__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .order__benefits-title {
+    margin-top: 14px;
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+
+  .order__benefits-list {
+    list-style: none;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+
+  .benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .benefit__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border: 1px solid rgba(196, 162, 101, 0.45);
+    border-radius: 50%;
+    color: var(--gold);
+  }
+
+  .benefit__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .benefit__body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 4px;
+  }
+
+  .benefit__title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  .benefit__text {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .order__form-wrap {
+    padding: 40px 38px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  .order__form-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 26px;
+  }
+
+  .order__form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .file-drop {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 20px;
+    text-align: center;
+    background: rgba(196, 162, 101, 0.06);
+    border: 1.5px dashed rgba(196, 162, 101, 0.75);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .file-drop:hover {
+    background: rgba(196, 162, 101, 0.12);
+    border-color: var(--gold);
+  }
+
+  .file-drop__icon {
+    width: 30px;
+    height: 30px;
+    color: var(--gold);
+  }
+
+  .file-drop__text {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .file-drop__note {
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  .file-drop__input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .order__submit {
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .order__form-note {
+    font-size: 0.76rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .steps__list {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 24px;
+    }
+
+    .steps__list::before {
+      display: none;
+    }
+
+    .order__grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .steps {
+      padding: 52px 0 44px;
+    }
+
+    .steps__list {
+      grid-template-columns: 1fr;
+    }
+
+    .order {
+      padding: 52px 0 64px;
+    }
+
+    .order__form-wrap {
+      padding: 32px 22px;
+    }
+  }
+</style>
