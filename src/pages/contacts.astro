@@ -7,41 +7,40 @@ import Footer from '../components/Footer.astro';
 const contacts = [
   {
     label: 'Адреса',
-    value: 'м. Київ, Україна, вул. Сирецька, 35',
+    value: 'м. Рівне, вул. Котляревського, 2а',
     href: undefined,
     icon: 'pin',
   },
   {
     label: 'Телефон',
-    value: '+38 (050) 123 45 67',
-    href: 'tel:+380501234567',
+    value: '+38 (067) 907 99 80',
+    href: 'tel:+380679079980',
     icon: 'phone',
   },
   {
-    label: 'Email',
-    value: 'hello@gapta.ua',
-    href: 'mailto:hello@gapta.ua',
-    icon: 'email',
+    label: 'Телефон',
+    value: '+38 (093) 287 60 80',
+    href: 'tel:+380932876080',
+    icon: 'phone',
   },
   {
     label: 'Сайт',
-    value: 'www.gapta.ua',
-    href: 'https://www.gapta.ua',
+    value: 'gapta.com.ua',
+    href: 'https://gapta.com.ua',
     icon: 'globe',
   },
 ];
 
 const socials = [
-  { name: 'Instagram', href: 'https://instagram.com/gapta.ua', icon: 'instagram' },
-  { name: 'Facebook', href: 'https://facebook.com/gapta.ua', icon: 'facebook' },
-  { name: 'Telegram', href: 'https://t.me/gapta_ua', icon: 'telegram' },
-  { name: 'Email', href: 'mailto:hello@gapta.ua', icon: 'email' },
+  { name: 'Instagram', href: 'https://www.instagram.com/gapta.rv/', icon: 'instagram' },
+  { name: 'Facebook', href: '/', icon: 'facebook', internal: true },
+  { name: 'Telegram', href: 'https://t.me/ksanamayska', icon: 'telegram' },
 ];
 ---
 
 <Layout
-  title="Контакти — ГАПТА | Студія машинної вишивки в Києві"
-  description="Зв'яжіться зі студією машинної вишивки ГАПТА: м. Київ, вул. Сирецька, 35, +38 (050) 123 45 67, hello@gapta.ua. Працюємо Пн–Пт 9:00–18:00. Відповідаємо протягом робочого дня."
+  title="Контакти — ГАПТА | Студія машинної вишивки в Рівному"
+  description="Зв'яжіться зі студією машинної вишивки ГАПТА: м. Рівне, вул. Котляревського, 2а, +38 (067) 907 99 80, +38 (093) 287 60 80. Працюємо Пн–Пт 9:00–18:00. Відповідаємо протягом робочого дня."
 >
   <Header />
   <main>
@@ -111,7 +110,7 @@ const socials = [
           <div class="contacts__socials">
             {
               socials.map((s) => (
-                <a href={s.href} class="contacts__social" aria-label={s.name} target={s.icon === 'email' ? undefined : '_blank'} rel="noopener">
+                <a href={s.href} class="contacts__social" aria-label={s.name} target={s.internal ? undefined : '_blank'} rel="noopener">
                   {s.icon === 'instagram' && (
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3">
                       <rect x="2" y="2" width="16" height="16" rx="4.5" />
@@ -168,14 +167,14 @@ const socials = [
       </div>
     </section>
 
-    <section class="map" aria-label="Мапа: м. Київ, вул. Сирецька, 35">
+    <section class="map" aria-label="Мапа: м. Рівне, вул. Котляревського, 2а">
       <div class="map__pin" aria-hidden="true">
         <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
           <path d="M16 29S6.5 20.5 6.5 13.5a9.5 9.5 0 0 1 19 0C25.5 20.5 16 29 16 29Z" stroke-linejoin="round" />
           <circle cx="16" cy="13.2" r="3.4" />
         </svg>
       </div>
-      <p class="map__label">м. Київ, вул. Сирецька, 35</p>
+      <p class="map__label">м. Рівне, вул. Котляревського, 2а</p>
     </section>
   </main>
   <Footer />
