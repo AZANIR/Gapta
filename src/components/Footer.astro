@@ -15,10 +15,20 @@ const infoLinks = [
   { label: 'Про нас', href: '/#cta' },
 ];
 
-const socials = [
+interface Social {
+  name: string;
+  href?: string;
+  icon: string;
+  internal?: boolean;
+  mailUser?: string;
+  mailDomain?: string;
+}
+
+const socials: Social[] = [
   { name: 'Instagram', href: 'https://www.instagram.com/gapta.rv/', icon: 'instagram' },
   { name: 'Facebook', href: '/', icon: 'facebook', internal: true },
   { name: 'Telegram', href: 'https://t.me/ksanamayska', icon: 'telegram' },
+  { name: 'Email', icon: 'email', mailUser: 'ksanamayska', mailDomain: 'gmail.com' },
 ];
 ---
 
@@ -32,7 +42,14 @@ const socials = [
       <div class="footer__socials">
         {
           socials.map((s) => (
-            <a href={s.href} class="footer__social" aria-label={s.name} target={s.internal ? undefined : '_blank'} rel="noopener">
+            <a
+              href={s.mailUser ? '#' : s.href}
+              class="footer__social"
+              aria-label={s.name}
+              target={s.internal || s.mailUser ? undefined : '_blank'}
+              rel="noopener"
+              {...(s.mailUser ? { 'data-mail-user': s.mailUser, 'data-mail-domain': s.mailDomain } : {})}
+            >
               {s.icon === 'instagram' && (
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3">
                   <rect x="2" y="2" width="16" height="16" rx="4.5" />
@@ -132,6 +149,13 @@ const socials = [
     </div>
   </div>
 </footer>
+
+<script>
+  // Email obfuscation: assemble mailto: links at runtime so bots can't harvest the address from HTML.
+  document.querySelectorAll('[data-mail-user]').forEach((el) => {
+    el.setAttribute('href', `mailto:${el.getAttribute('data-mail-user')}@${el.getAttribute('data-mail-domain')}`);
+  });
+</script>
 
 <style>
   .footer {
