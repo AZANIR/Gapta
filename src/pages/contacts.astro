@@ -212,8 +212,20 @@ const socials: Social[] = [
         src="https://www.google.com/maps?q=%D0%B2%D1%83%D0%BB.+%D0%9A%D0%BE%D1%82%D0%BB%D1%8F%D1%80%D0%B5%D0%B2%D1%81%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE,+2%D0%B0,+%D0%A0%D1%96%D0%B2%D0%BD%D0%B5,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0&z=16&output=embed"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
-      <div class="map__tint" aria-hidden="true"></div>
+        tabindex="-1"></iframe>
+      <a
+        class="map__link"
+        href="https://www.google.com/maps/dir/?api=1&destination=%D0%B2%D1%83%D0%BB.+%D0%9A%D0%BE%D1%82%D0%BB%D1%8F%D1%80%D0%B5%D0%B2%D1%81%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE,+2%D0%B0,+%D0%A0%D1%96%D0%B2%D0%BD%D0%B5,+%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0"
+        target="_blank"
+        rel="noopener"
+        aria-label="Побудувати маршрут до вул. Котляревського, 2а у Google Maps"
+      ></a>
+      <div class="map__pin" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M16 29S6.5 20.5 6.5 13.5a9.5 9.5 0 0 1 19 0C25.5 20.5 16 29 16 29Z" stroke-linejoin="round" />
+          <circle cx="16" cy="13.2" r="3.4" />
+        </svg>
+      </div>
       <p class="map__label">м. Рівне, вул. Котляревського, 2а</p>
     </section>
   </main>
@@ -391,9 +403,16 @@ const socials: Social[] = [
 
   .map {
     position: relative;
-    height: 420px;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
     overflow: hidden;
-    background: var(--navy-deep);
+    background:
+      radial-gradient(circle at 50% 42%, rgba(196, 162, 101, 0.14) 0%, transparent 55%),
+      var(--navy-deep);
   }
 
   .map__frame {
@@ -402,40 +421,59 @@ const socials: Social[] = [
     width: 100%;
     height: 100%;
     border: 0;
-  }
-
-  .map__tint {
-    position: absolute;
-    inset: 0;
-    background: rgba(14, 23, 48, 0.45);
+    opacity: 0.22;
+    filter: grayscale(40%);
     pointer-events: none;
   }
 
-  .map__label {
+  .map__link {
     position: absolute;
-    left: 24px;
-    bottom: 24px;
-    padding: 10px 18px;
-    background: rgba(14, 23, 48, 0.82);
-    border: 1px solid rgba(196, 162, 101, 0.4);
-    border-radius: 2px;
+    inset: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .map__pin {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    border: 1px solid rgba(196, 162, 101, 0.5);
+    border-radius: 50%;
+    color: var(--gold);
+    background: rgba(14, 23, 48, 0.6);
+    pointer-events: none;
+  }
+
+  .map__pin svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .map__label {
+    position: relative;
+    z-index: 2;
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(14, 23, 48, 0.6);
+    padding: 8px 16px;
+    border-radius: 2px;
     pointer-events: none;
+  }
+
+  .map:hover .map__pin {
+    border-color: var(--gold);
   }
 
   @media (max-width: 900px) {
     .map {
-      height: 320px;
-    }
-
-    .map__label {
-      left: 16px;
-      bottom: 16px;
-      font-size: 0.72rem;
+      height: 300px;
     }
   }
 
