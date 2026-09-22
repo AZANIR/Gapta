@@ -1,0 +1,99 @@
+---
+interface Props {
+  image: string;
+  overline: string;
+  title: string;
+  crumb: string;
+}
+
+const { image, overline, title, crumb } = Astro.props;
+---
+
+<section class="page-hero" style={`background-image: url('${image}');`}>
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="container page-hero__inner">
+    <p class="overline page-hero__overline">{overline}</p>
+    <h1 class="page-hero__title">{title}</h1>
+    <nav class="page-hero__crumbs" aria-label="Хлібні крихти">
+      <a href="/">Головна</a>
+      <span class="page-hero__sep" aria-hidden="true">/</span>
+      <span class="page-hero__current" aria-current="page">{crumb}</span>
+    </nav>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(14, 23, 48, 0.94) 0%, rgba(20, 33, 61, 0.78) 55%, rgba(20, 33, 61, 0.55) 100%);
+  }
+
+  .page-hero__inner {
+    position: relative;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .page-hero__overline {
+    margin-bottom: 16px;
+  }
+
+  .page-hero__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.4vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 22px;
+  }
+
+  .page-hero__crumbs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .page-hero__crumbs a {
+    transition: color 0.2s ease;
+  }
+
+  .page-hero__crumbs a:hover {
+    color: var(--gold);
+  }
+
+  .page-hero__sep {
+    color: var(--gold);
+  }
+
+  .page-hero__current {
+    color: var(--gold);
+  }
+
+  @media (max-width: 640px) {
+    .page-hero {
+      min-height: 300px;
+    }
+
+    .page-hero__inner {
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+  }
+</style>

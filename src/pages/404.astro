@@ -1,16 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<BaseLayout title="404 — Сторінку не знайдено | GAPTA">
-  <main class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center px-4">
-    <div class="text-center">
-      <p class="text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-4">404</p>
-      <h1 class="text-2xl font-bold text-white mb-4">Сторінку не знайдено</h1>
-      <p class="text-slate-400 mb-8">Такої сторінки не існує або вона була переміщена.</p>
-      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 rounded-xl text-white font-medium transition-all duration-300">
-        ← На головну
-      </a>
+<Layout title="404 — Сторінку не знайдено | ГАПТА" description="Сторінку не знайдено. Поверніться на головну студії машинної вишивки ГАПТА.">
+  <main style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--navy-deep); color: var(--cream); text-align: center; padding: 2rem;">
+    <div>
+      <p style="font-family: var(--font-serif); font-size: clamp(5rem, 15vw, 9rem); line-height: 1; color: var(--gold); margin-bottom: 1rem;">404</p>
+      <h1 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1rem;">Сторінку не знайдено</h1>
+      <p style="color: rgba(245, 240, 230, 0.7); margin-bottom: 2.5rem;">Такої сторінки не існує або вона була переміщена.</p>
+      <a href="/" class="btn btn--gold">← На головну</a>
     </div>
   </main>
-</BaseLayout>
+</Layout>
