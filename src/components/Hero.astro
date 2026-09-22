@@ -32,31 +32,7 @@
   </div>
 
   <a href="#features" class="stamp" aria-label="Якість у деталях — ГАПТА">
-    <svg class="stamp__svg" viewBox="0 0 160 160" fill="none">
-      <circle class="stamp__ring" cx="80" cy="80" r="78" stroke="currentColor" stroke-width="1" />
-      <circle class="stamp__ring" cx="80" cy="80" r="56" stroke="currentColor" stroke-width="1" opacity="0.5" />
-      <g class="stamp__spin">
-        <defs>
-          <path id="stamp-circle" d="M 80,80 m -66,0 a 66,66 0 1,1 132,0 a 66,66 0 1,1 -132,0" />
-        </defs>
-        <text class="stamp__text">
-          <textPath href="#stamp-circle" startOffset="0">
-            Якість у деталях • Гапта •&#160;
-          </textPath>
-        </text>
-      </g>
-      <g class="stamp__flower" stroke="currentColor" stroke-width="1.2">
-        <circle cx="80" cy="80" r="5" fill="none" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(45 80 80)" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(90 80 80)" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(135 80 80)" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(180 80 80)" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(225 80 80)" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(270 80 80)" />
-        <path d="M80 68c2.2 4.2 2.2 8.2 0 12-2.2-3.8-2.2-7.8 0-12Z" transform="rotate(315 80 80)" />
-      </g>
-    </svg>
+    <img class="stamp__img" src="/assets/seal-gapta.png" alt="" width="518" height="520" loading="lazy" decoding="async" />
   </a>
 </section>
 
@@ -153,28 +129,12 @@
     transform: scale(1.05);
   }
 
-  .stamp__svg {
+  .stamp__img {
     width: 100%;
     height: 100%;
     display: block;
-  }
-
-  .stamp__text {
-    font-family: var(--font-sans);
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    fill: var(--gold);
-  }
-
-  .stamp__spin {
-    transform-origin: 80px 80px;
-    animation: stamp-rotate 18s linear infinite;
-  }
-
-  .stamp__flower {
-    color: var(--gold);
+    object-fit: contain;
+    animation: stamp-rotate 24s linear infinite;
   }
 
   @keyframes stamp-rotate {
